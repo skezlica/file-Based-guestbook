@@ -3,9 +3,22 @@
 require_once 'GuestbookEntry.php';
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $name = $_POST['name'];
-    $message = $_POST['message'];
+    $name = santilize($_POST['name']);
+    $message = santilize($_POST['message']);
 
-    $entry = new GuestbookEntry($name, $message);
-    echo $entry;
+    if(empty($name) || empty($message)) {
+        echo 'Name and message are required.';
+    } else {
+        $name = htmlspecialchars($name);
+        $message = htmlspecialchars($message);
+        $entry = new GuestbookEntry($name, $message);
+        echo $entry;
+    }
+}
+
+function santilize($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
 }
