@@ -1,6 +1,14 @@
 <?php
 
 require_once 'GuestbookEntry.php';
+require_once 'Guestbook.php';
+
+session_start();
+
+if (!isset($_SESSION['guestbook'])) {
+    $_SESSION['guestbook'] = new Guestbook();
+}
+$guestbook = $_SESSION['guestbook'];
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = santilize($_POST['name']);
@@ -11,8 +19,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         $name = htmlspecialchars($name);
         $message = htmlspecialchars($message);
+        
         $entry = new GuestbookEntry($name, $message);
-        echo $entry;
+
+        $guestbook->addEntry($entry);
     }
 }
 
