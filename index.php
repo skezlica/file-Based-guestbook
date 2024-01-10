@@ -1,6 +1,6 @@
 <?php
 
-require_once 'guestbook.php';
+
 
 ?>
 
@@ -14,11 +14,7 @@ require_once 'guestbook.php';
 <body>
     <h1>File-Based Guestbook</h1>
 
-    <?php if (!empty($error)) : ?>
-        <p style="color: red;"><?php echo $error; ?></p>
-    <?php endif; ?>
-
-    <form action="guestbook.php" method="POST">
+    <form action="" method="POST">
         <label for="name_id">Name:</label>
         <input type="text" name="name" id="name_id">
         <label for="message_id">Message:</label>
