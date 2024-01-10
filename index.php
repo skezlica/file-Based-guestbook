@@ -1,9 +1,3 @@
-<?php
-
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +8,7 @@
 <body>
     <h1>File-Based Guestbook</h1>
 
-    <form action="" method="POST">
+    <form action="guestbookForm.php" method="POST">
         <label for="name_id">Name:</label>
         <input type="text" name="name" id="name_id">
         <label for="message_id">Message:</label>
