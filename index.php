@@ -11,6 +11,7 @@ $filehandler = new FileHandler('guestbook.txt');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <title>File-Based Guestbook</title>
 </head>
 <body>
@@ -31,14 +32,16 @@ $filehandler = new FileHandler('guestbook.txt');
 
     ?>
     </div>
-
-    <form action="guestbookForm.php" method="POST">
-        <label for="name_id">Name:</label>
-        <input type="text" name="name" id="name_id">
-        <label for="message_id">Message:</label>
-        <input type="text" name="message" id="message_id">
-        <button type="submit">Send</button>
-    </form>
+    <div class="guestbook-form">
+        <form action="guestbookForm.php" method="POST">
+            <label for="name_id">Name:</label>
+            <input type="text" name="name" id="name_id">
+            <label for="message_id">Message:</label>
+            <input type="text" name="message" id="message_id">
+            <button type="submit">Send</button>
+         </form>
+    </div>
+    
 
     <div class="guestbook">
         <?php 

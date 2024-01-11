@@ -1,0 +1,78 @@
+body {
+    background: rgb(255,255,255);
+    background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(60,110,113,1) 100%);
+    height: 100vh;
+    background-size: cover;
+    
+
+}
+
+h1 {
+    color: #284B63;
+    text-align: center;
+}
+
+.errors {
+    font-weight: bold;
+    color: crimson;
+    text-align: center;
+}
+
+.guestbook-form{
+    display: flex;
+    justify-content: center;
+}
+
+form {
+    padding: 16px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    border: 1px solid #353535;
+    border-radius: 10px;
+    background-color: rgba(60,110,113,0.4);
+    display: inline-block;
+    -webkit-box-shadow: 0px 10px 20px -6px rgba(60,110,113,1);
+    -moz-box-shadow: 0px 10px 20px -6px rgba(60,110,113,1);
+    box-shadow: 0px 10px 20px -6px rgba(60,110,113,1);
+}
+
+form label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #353535;
+}
+
+form input {
+    display: block;
+    margin-bottom: 16px;
+    font-size: 18px;
+    border-radius: 10px;
+    border-color: #353535;
+    color: #353535;
+}
+
+form button {
+    display: block;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 5px 20px;
+    cursor: pointer;
+    background-color: #3C6E71;
+    color: #FFFFFF;
+    border-color: #353535;
+    transition: 0.3s;
+    -webkit-box-shadow: 0px 10px 20px -6px rgba(60,110,113,1);
+    -moz-box-shadow: 0px 10px 20px -6px rgba(60,110,113,1);
+    box-shadow: 0px 10px 20px -6px rgba(60,110,113,1);
+}
+
+form button:hover {
+    background-color: #284B63;
+    -webkit-box-shadow: 0px 10px 20px -6px rgba(40,75,99,1);
+    -moz-box-shadow: 0px 10px 20px -6px rgba(40,75,99,1);
+    box-shadow: 0px 10px 20px -6px rgba(40,75,99,1);
+}
