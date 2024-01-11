@@ -22,12 +22,4 @@ class GuestbookEntry {
     {
         return date($format, $this->timestamp);
     }
-
-    public function __toString() {
-return "Name: {$this->name},
-Message: {$this->message}, 
-Timestamp: {$this->formatTimestamp()}
-    
-";
-    }
 }

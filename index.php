@@ -1,8 +1,10 @@
 <?php 
 
+require_once 'GuestbookEntry.php';
 require_once 'FileHandler.php';
 
 $filehandler = new FileHandler('guestbook.txt');
+$entries = $filehandler->readEntries();
 
 ?>
 
@@ -11,7 +13,7 @@ $filehandler = new FileHandler('guestbook.txt');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
     <title>File-Based Guestbook</title>
 </head>
 <body>
@@ -44,11 +46,17 @@ $filehandler = new FileHandler('guestbook.txt');
     
 
     <div class="guestbook">
-        <?php 
-        
-        $filehandler->readEntries();
-        
-        ?>
+    <?php
+
+    foreach ($entries as $entry) {
+        echo '<div class="entry">';
+        echo '<strong>' . $entry->getName() . '</strong><br>';
+        echo '<p>' . $entry->getMessage() . '</p>';
+        echo '<small>' . $entry->formatTimestamp() . '</small>';
+        echo '</div>';
+    }
+
+    ?>
     </div>
 </body>
 </html>
