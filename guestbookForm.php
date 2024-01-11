@@ -11,8 +11,8 @@ if (!isset($_SESSION['guestbook'])) {
 $guestbook = $_SESSION['guestbook'];
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $name = santilize($_POST['name']);
-    $message = santilize($_POST['message']);
+    $name = sanitize($_POST['name']);
+    $message = sanitize($_POST['message']);
 
     if(empty($name) || empty($message)) {
         echo 'Name and message are required.';
@@ -26,7 +26,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
-function santilize($data) {
+function sanitize($data) {
     $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
