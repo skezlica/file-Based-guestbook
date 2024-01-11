@@ -16,11 +16,10 @@ class GuestbookEntry {
     }
 
     public function __toString() {
-        return "
-    Name: {$this->name},
-    Message: {$this->message}, 
-    Timestamp: {$this->formatTimestamp()}
+return "Name: {$this->name},
+Message: {$this->message}, 
+Timestamp: {$this->formatTimestamp()}
     
-    ";
+";
     }
 }

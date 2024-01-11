@@ -9,7 +9,12 @@ class FileHandler {
     }
 
     public function readEntries() {
-        
+        $handle = fopen($this->filename, 'r');
+        while (!feof($handle)) {
+            $line = fgets($handle) . "<br>";
+            echo $line;
+        }
+        fclose($handle);
     }
 
     public function appendEntry(GuestbookEntry $entry) {

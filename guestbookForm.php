@@ -24,6 +24,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $fileHandler = new FileHandler('guestbook.txt');
         $fileHandler->appendEntry($entry);
+        $fileHandler->readEntries();
     }
 }
 
