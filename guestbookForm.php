@@ -6,26 +6,32 @@ require_once 'FileHandler.php';
 
 session_start();
 
-if (!isset($_SESSION['guestbook'])) {
-    $_SESSION['guestbook'] = new Guestbook();
-}
-$guestbook = $_SESSION['guestbook'];
+$errors = [];
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = sanitize($_POST['name']);
     $message = sanitize($_POST['message']);
 
     if(empty($name) || empty($message)) {
-        echo 'Name and message are required.';
+        $errors[] = 'Name and message are required.';
     } else {            
         $entry = new GuestbookEntry($name, $message);
 
+        $guestbook = new Guestbook();
         $guestbook->addEntry($entry);
 
         $fileHandler = new FileHandler('guestbook.txt');
         $fileHandler->appendEntry($entry);
-        $fileHandler->readEntries();
+        
+        header('location:index.php');
+        exit();
     }
+}
+
+if (!empty($errors)) {
+    $_SESSION['errors'] = $errors;
+    header('location:index.php');
+    exit();
 }
 
 function sanitize($data) {
@@ -34,3 +40,4 @@ function sanitize($data) {
     $data = htmlspecialchars($data);
     return $data;
 }
+
