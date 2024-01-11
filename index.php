@@ -1,3 +1,11 @@
+<?php 
+
+require_once 'FileHandler.php';
+
+$filehandler = new FileHandler('guestbook.txt');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +18,7 @@
 
     <div class="errors">
     <?php
+
     session_start();
 
     if (isset($_SESSION['errors']) && !empty($_SESSION['errors'])) {
@@ -19,6 +28,7 @@
 
         unset($_SESSION['errors']);
     }
+
     ?>
     </div>
 
@@ -29,5 +39,13 @@
         <input type="text" name="message" id="message_id">
         <button type="submit">Send</button>
     </form>
+
+    <div class="guestbook">
+        <?php 
+        
+        $filehandler->readEntries();
+        
+        ?>
+    </div>
 </body>
 </html>
