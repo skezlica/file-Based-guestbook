@@ -2,6 +2,7 @@
 
 require_once 'GuestbookEntry.php';
 require_once 'Guestbook.php';
+require_once 'FileHandler.php';
 
 session_start();
 
@@ -18,8 +19,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo 'Name and message are required.';
     } else {            
         $entry = new GuestbookEntry($name, $message);
-        
+
         $guestbook->addEntry($entry);
+
+        $fileHandler = new FileHandler('guestbook.txt');
+        $fileHandler->appendEntry($entry);
     }
 }
 
