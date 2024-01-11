@@ -16,12 +16,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if(empty($name) || empty($message)) {
         echo 'Name and message are required.';
-    } else {
-        $name = htmlspecialchars($name);
-        $message = htmlspecialchars($message);
-        
+    } else {            
         $entry = new GuestbookEntry($name, $message);
-
+        
         $guestbook->addEntry($entry);
     }
 }
