@@ -1,2 +1,0 @@
-{"name":"Stefan Nasic","message":"Hello World!","timestamp":"2024-01-11 15:29:41"}
-{"name":"Jane Doe","message":"Message!","timestamp":"2024-01-11 15:30:19"}
