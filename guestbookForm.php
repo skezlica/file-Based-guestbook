@@ -2,33 +2,42 @@
 
 require_once 'GuestbookEntry.php';
 require_once 'Guestbook.php';
+require_once 'FileHandler.php';
 
 session_start();
 
-if (!isset($_SESSION['guestbook'])) {
-    $_SESSION['guestbook'] = new Guestbook();
-}
-$guestbook = $_SESSION['guestbook'];
+$errors = [];
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $name = santilize($_POST['name']);
-    $message = santilize($_POST['message']);
+    $name = sanitize($_POST['name']);
+    $message = sanitize($_POST['message']);
 
     if(empty($name) || empty($message)) {
-        echo 'Name and message are required.';
-    } else {
-        $name = htmlspecialchars($name);
-        $message = htmlspecialchars($message);
-        
+        $errors[] = 'Name and message are required.';
+    } else {            
         $entry = new GuestbookEntry($name, $message);
 
+        $guestbook = new Guestbook();
         $guestbook->addEntry($entry);
+
+        $fileHandler = new FileHandler('guestbook.txt');
+        $fileHandler->appendEntry($entry);
+        
+        header('location:index.php');
+        exit();
     }
 }
 
-function santilize($data) {
+if (!empty($errors)) {
+    $_SESSION['errors'] = $errors;
+    header('location:index.php');
+    exit();
+}
+
+function sanitize($data) {
     $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
     return $data;
 }
+

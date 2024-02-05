@@ -4,18 +4,22 @@ class GuestbookEntry {
 
     private $name, $message, $timestamp;
 
-    public function __construct($name, $message) {
+    public function __construct(string $name, string $message) {
         $this->name = $name;
         $this->message = $message;
         $this->timestamp = time();
     }
 
-    public function formatTimestamp($format = 'd-m-y h:i:s')
-    {
-        return date($format, $this->timestamp);
+    public function getName() {
+        return $this->name;
+    }
+    
+    public function getMessage() {
+        return $this->message;
     }
 
-    public function __toString() {
-        return "Name: {$this->name}, Message: {$this->message}, Timestamp: {$this->formatTimestamp()}";
+    public function formatTimestamp(string $format = 'd-m-y h:i:s')
+    {
+        return date($format, $this->timestamp);
     }
 }
